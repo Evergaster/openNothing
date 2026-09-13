@@ -1,0 +1,71 @@
+"""Constantes y tabla de comandos del protocolo SPP Nothing/CMF.
+
+Tabla verificada contra CMF Buds 2 Plus (repo chukfinley/nada) y contra la
+captura real de un CMF Buds Pro 2 (B172 "espeon").
+"""
+
+from enum import IntEnum
+
+SOF = 0x55
+CTRL_REQUEST = 0x0160
+CTRL_EVENT = 0x0100
+MASK_CRC = 0x0020
+MASK_MULTI_FRAMES = 0x0040
+MASK_REQUEST = 0x8000
+MASK_RESPONSE = 0x7FFF
+
+CRC_APP = "app"
+CRC_DEVICE = "device"
+
+DEFAULT_MAC = "2C:BE:EE:70:76:30"
+DEFAULT_CHANNEL = 15
+DEFAULT_TIMEOUT = 5.0
+
+EQ_GAIN_OFFSET = 6
+BASS_LEVEL_MIN = 0
+BASS_LEVEL_MAX = 10
+BASS_LEVEL_DEFAULT = 10
+
+SIDE_SINGLE = 0x05
+
+
+class Command(IntEnum):
+    READ_BATTERY = 0xC007
+    READ_EARPHONE_STATUS = 0xC00A
+    READ_SUPPORTED_FEATURES = 0xC00D
+    READ_EXTRA_FEATURES = 0xC00E
+    READ_GESTURES = 0xC018
+    READ_DEVICE_MODEL = 0xC01C
+    READ_ANC = 0xC01E
+    READ_EQ = 0xC01F
+    READ_PERSONALIZED_ANC = 0xC020
+    READ_LOW_LATENCY = 0xC041
+    READ_FIRMWARE = 0xC042
+    READ_BASS_BOOST = 0xC04E
+    READ_SPATIAL_AUDIO = 0xC04F
+    READ_SMART_ANC = 0xC055
+    READ_ADVANCED_EQ_MODE = 0xC06C
+    READ_ADVANCED_EQ_VALUES = 0xC06D
+
+    SET_FIND_DEVICE = 0xF002
+    SET_GESTURES = 0xF003
+    SET_EXTRA_FEATURES = 0xF004
+    SET_UTC_TIME = 0xF00A
+    SET_ANC = 0xF00F
+    SET_EQ = 0xF010
+    SET_PERSONALIZED_ANC = 0xF011
+    SET_LOW_LATENCY = 0xF040
+    SET_BASS_BOOST = 0xF051
+    SET_SPATIAL_AUDIO = 0xF052
+    SET_SMART_ANC = 0xF059
+    SET_ADVANCED_EQ_MODE = 0xF06C
+    SET_ADVANCED_EQ_VALUES = 0xF06D
+
+    PUSH_BATTERY = 0xE001
+    PUSH_ANC = 0xE003
+    PUSH_EAR_TIP_FIT = 0xE00D
+
+
+def response_of(command: int) -> int:
+    """Id de respuesta para un request: el id con el bit 15 limpio."""
+    return command & MASK_RESPONSE

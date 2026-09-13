@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opennothing"
+version = "0.1.0"
+description = "Control de audifonos Nothing (CMF Buds Pro 2) via SPP/RFCOMM, por capas y testeable sin hardware."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+
+[project.scripts]
+opennothing = "opennothing.cli:main"
+
+[tool.setuptools]
+packages = [
+    "opennothing",
+    "opennothing.protocol",
+    "opennothing.transport",
+    "opennothing.device",
+]
