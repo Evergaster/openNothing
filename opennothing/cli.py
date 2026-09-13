@@ -4,12 +4,13 @@ import argparse
 from typing import Optional
 
 from opennothing import CMFBudsController
-from opennothing.protocol.constants import DEFAULT_CHANNEL, DEFAULT_MAC, DEFAULT_TIMEOUT
+from opennothing.protocol.constants import DEFAULT_CHANNEL, DEFAULT_TIMEOUT
 
 
 def _build_parser() -> argparse.ArgumentParser:
     common = argparse.ArgumentParser(add_help=False)
-    common.add_argument("--mac", default=DEFAULT_MAC, help="MAC del dispositivo")
+    common.add_argument("--mac", default=None,
+                        help="MAC del dispositivo (si se omite, se detecta automaticamente)")
     common.add_argument("--channel", type=int, default=DEFAULT_CHANNEL)
     common.add_argument("--model", default="B172", help="codigo de producto (B172)")
     common.add_argument("--timeout", type=float, default=DEFAULT_TIMEOUT)

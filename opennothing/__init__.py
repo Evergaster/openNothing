@@ -18,7 +18,7 @@ from opennothing.errors import (
     Timeout,
     UnknownValueError,
 )
-from opennothing.protocol.constants import DEFAULT_CHANNEL, DEFAULT_MAC, DEFAULT_TIMEOUT
+from opennothing.protocol.constants import DEFAULT_CHANNEL, DEFAULT_TIMEOUT
 
 __version__ = "0.1.0"
 
@@ -32,7 +32,6 @@ __all__ = [
     "Timeout",
     "UnknownValueError",
     "DEFAULT_CHANNEL",
-    "DEFAULT_MAC",
     "DEFAULT_TIMEOUT",
     "__version__",
 ]

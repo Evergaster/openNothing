@@ -16,7 +16,7 @@ después del subcomando:
 
 | Flag | Por defecto | Descripcion |
 |---|---|---|
-| `--mac <MAC>` | `2C:BE:EE:70:76:30` | MAC del dispositivo Bluetooth |
+| `--mac <MAC>` | auto (deteccion) | MAC del dispositivo Bluetooth |
 | `--channel <n>` | `15` | Canal SPP/RFCOMM del servicio |
 | `--model <codigo>` | `B172` | Codigo de producto (B172 = CMF Buds Pro 2) |
 | `--timeout <s>` | `5.0` | Timeout de conexion/lectura, en segundos |
@@ -36,7 +36,7 @@ Lee el estado general: modelo, firmware, modo ANC y bateria.
 
 ```bash
 opennothing status
-opennothing status --mac 2C:BE:EE:70:76:30
+opennothing status            # auto-detecta el MAC del dispositivo
 opennothing status --scripted    # demo sin hardware
 ```
 
